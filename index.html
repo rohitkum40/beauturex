@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beauturex - पुरुषों की शक्ति</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root{
+            --primary:#0e1214;
+            --secondary:#151b1f;
+            --accent:#e74c3c;
+            --light:#f7f9fa;
+            --dark:#2c3e50;
+            --success:#27ae60;
+            --muted:#6c7a89;
+        }
+        *{box-sizing:border-box}
+        html,body{height:100%}
+        body{margin:0;font-family:Inter, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;background:var(--light);color:#222;line-height:1.5}
+        .container{width:92%;max-width:1200px;margin:0 auto;padding:0 12px}
+        header{background:linear-gradient(90deg,var(--primary),var(--secondary));color:#fff;padding:12px 0;position:sticky;top:0;z-index:1000}
+        .header-content{display:flex;align-items:center;justify-content:space-between;gap:12px}
+        .logo{display:flex;align-items:center;gap:10px}
+        .logo-icon{font-size:28px;color:#ffd54a}
+        .logo h1{font-size:20px;margin:0}
+        nav ul{display:flex;gap:12px;list-style:none;margin:0;padding:0}
+        nav a{color:#fff;text-decoration:none;padding:6px 10px;border-radius:8px;font-weight:600}
+        .contact-actions{display:flex;gap:10px;align-items:center}
+        .whatsapp-btn,.call-btn{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.08);color:#fff;padding:8px 12px;border-radius:8px;text-decoration:none;font-weight:700}
+        .whatsapp-btn i{color:#25D366}
+        .call-btn i{color:#ffd54a}
+        .hero{background:linear-gradient(rgba(0,0,0,0.45),rgba(0,0,0,0.25)),url(background.jpg) center/cover;padding:72px 0;color:#fff;text-align:center;border-bottom:6px solid rgba(0,0,0,0.06)}
+        .hero h2{font-size:32px;margin:0 0 10px;animation:fadeInUp .6s ease both}
+        .hero p{font-size:16px;max-width:920px;margin:0 auto 18px;opacity:0.95}
+        .btn{display:inline-block;background:var(--accent);color:#fff;padding:10px 20px;border-radius:30px;text-decoration:none;font-weight:700;border:none;cursor:pointer;transition:transform .18s ease,box-shadow .18s ease}
+        .btn:hover{transform:translateY(-4px);box-shadow:0 10px 30px rgba(0,0,0,0.15)}
+        .btn.secondary{background:var(--secondary)}
+        .section-title{text-align:center;margin:36px 0 8px;color:var(--primary);font-size:22px;position:relative;padding-bottom:12px}
+        .section-title::after{content:'';position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:70px;height:4px;background:var(--accent)}
+        .products{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;margin:18px 0}
+        .product-card{background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 8px 24px rgba(28,41,64,0.06);transform:translateY(0);transition:transform .28s ease,box-shadow .28s ease}
+        .product-card:hover{transform:translateY(-8px);box-shadow:0 18px 40px rgba(28,41,64,0.08)}
+        .product-img{height:200px;overflow:hidden}
+        .product-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s ease}
+        .product-card:hover .product-img img{transform:scale(1.06)}
+        .product-info{padding:16px}
+        .product-info h3{color:var(--primary);margin:0 0 8px;font-size:18px}
+        .product-info p{font-size:14px;color:var(--muted);margin:0 0 8px}
+        .product-info ul{margin:10px 0 14px;padding-left:18px;color:var(--muted)}
+        .benefits{background:linear-gradient(180deg,#fff,#f6fbff);padding:28px 0}
+        .benefits-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+        .benefit-card{background:#fff;padding:18px;border-radius:12px;text-align:center;box-shadow:0 6px 18px rgba(28,41,64,0.04)}
+        .benefit-icon{font-size:30px;color:var(--secondary);margin-bottom:10px}
+        .testimonials{padding:28px 0}
+        .testimonial-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+        .testimonial-card{background:#fff;padding:16px;border-radius:12px;box-shadow:0 6px 18px rgba(28,41,64,0.04)}
+        .testimonial-text{font-style:italic;margin-bottom:12px;color:#0b2236}
+        .testimonial-author{display:flex;align-items:center;gap:12px}
+        .author-img{width:56px;height:56px;border-radius:50%;overflow:hidden;background:#eee}
+        .author-img img{width:100%;height:100%;object-fit:cover}
+        .faq{padding:18px 0}
+        .faq-container{max-width:900px;margin:0 auto}
+        .faq-item{background:#fff;margin-bottom:12px;border-radius:10px;overflow:hidden;box-shadow:0 4px 14px rgba(28,41,64,0.04)}
+        .faq-question{padding:14px;display:flex;justify-content:space-between;align-items:center;cursor:pointer;background:linear-gradient(90deg,var(--primary),var(--secondary));color:#fff}
+        .faq-answer{padding:0 14px;max-height:0;overflow:hidden;transition:max-height .32s ease,padding .32s ease}
+        .faq-item.active .faq-answer{max-height:420px;padding:12px 14px}
+        .contact{padding:24px 0}
+        .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+        .contact-info{background:var(--primary);color:#fff;padding:18px;border-radius:12px}
+        .contact-form{background:#f2f2f2;padding:18px;border-radius:12px;box-shadow:0 8px 24px rgba(28,41,64,0.05)}
+        .form-group{margin-bottom:12px}
+        label{display:block;margin-bottom:6px;font-weight:700;color:#10232a}
+        input,textarea,select{width:100%;padding:10px;border:1px solid #e6eef6;border-radius:8px;font-size:14px}
+        textarea{min-height:120px}
+        .small{font-size:13px;color:var(--muted)}
+        .order-popup{position:fixed;left:16px;bottom:16px;background:#fff;padding:12px 14px;border-radius:10px;box-shadow:0 14px 40px rgba(2,6,23,0.18);display:flex;align-items:center;gap:12px;min-width:260px;z-index:1200}
+        .order-popup.hidden{display:none}
+        .order-dot{width:12px;height:12px;border-radius:50%;background:var(--success)}
+        .thank-you{display:none;text-align:center;padding:36px 12px}
+        .thank-you.active{display:block}
+        footer{background:var(--dark);color:#fff;padding:22px 0;margin-top:20px}
+        .footer-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px}
+        .footer-section h3{margin-bottom:8px}
+        .footer-bottom{text-align:center;padding-top:12px;border-top:1px solid rgba(255,255,255,0.06);margin-top:12px}
+        
+        @media (max-width:900px){
+            .contact-grid{grid-template-columns:1fr}
+            nav ul{display:none}
+        }
+        @media (max-width:00px){
+            .hero{padding:36px 0}
+            .hero h2{font-size:22px}
+            .header-content{flex-direction:column;gap:8px;align-items:flex-start}
+            .contact-actions{width:100%;justify-content:flex-end}
+        }
+        @keyframes fadeInUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+        .hamburger {
+      display: none;
+      font-size: 26px;
+      color: #fff;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      nav ul {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 70px;
+        right: 20px;
+        background: rgba(14,18,20,0.95);
+        padding: 20px;
+        border-radius: 10px;
+        animation: fadeInDown 0.3s ease forwards;
+      }
+
+      nav ul.active {
+        display: flex;
+      }
+
+      .hamburger {
+        display: block;
+      }
+
+      .contact-actions {
+        display: none; /* mobile pe hide */
+      }
+    }
+
+    @keyframes fadeInDown {
+      from {opacity:0; transform: translateY(-10px);}
+      to {opacity:1; transform: translateY(0);}
+    }
+    </style>
+    <!-- Floating WhatsApp Button -->
+<a href="https://wa.me/918471033094" target="_blank" class="whatsapp-float">
+  <i class="fab fa-whatsapp"></i>
+</a>
+
+<style>
+  .whatsapp-float {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #25d366;
+    color: #fff;
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    z-index: 1000;
+    cursor: pointer;
+    animation: pulse 2s infinite;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+
+  .whatsapp-float:hover {
+    transform: scale(1.2);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+  }
+
+  @keyframes pulse {
+    0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37,211,102,0.7); }
+    70% { transform: scale(1.1); box-shadow: 0 0 0 10px rgba(37,211,102,0); }
+    100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37,211,102,0); }
+  }
+</style>
+
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <i class="fas fa-leaf logo-icon" aria-hidden></i>
+                <h1>Beauturex</h1>
+            </div>
+            <nav>
+        <ul id="menu">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#products">Products</a></li>
+          <li><a href="#review">Review</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+
+           <div class="hamburger" id="hamburger">
+           <i class="fas fa-bars"></i>
+           </div>
+          </nav><script>
+    const hamburger = document.getElementById('hamburger');
+    const menu = document.getElementById('menu');
+    const hamburgerIcon = hamburger.querySelector("i");
+
+    hamburger.addEventListener('click', () => {
+      menu.classList.toggle('active');
+
+      // Toggle icon between bars and times
+      if (menu.classList.contains('active')) {
+        hamburgerIcon.classList.remove("fa-bars");
+        hamburgerIcon.classList.add("fa-times");
+      } else {
+        hamburgerIcon.classList.remove("fa-times");
+        hamburgerIcon.classList.add("fa-bars");
+      }
+    });
+  </script>
+            
+
+            
+            <div class="contact-actions">
+                <a class="whatsapp-btn" href="https://wa.me/918471033094" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp संपर्क">
+                    <i class="fab fa-whatsapp"></i>
+                    <span>WhatsApp</span>
+                </a>
+                <a class="call-btn" href="tel:8471033094" aria-label="कॉल करें">
+                    <i class="fas fa-phone"></i>
+                    <span>Call: 8471033094</span>
+                </a>
+            </div>
+        </div>
+    </header>
+    <section id="home"  class="hero">
+        <div class="container">
+            <h2>प्राकृतिक आयुर्वेदिक उत्पाद — पुरुषों की शक्ति और आत्मविश्वास के लिए</h2>
+            <p>Beauturex आयुर्वेदिक जड़ी-बूटियों से तैयार उच्च गुणवत्ता वाले उत्पाद प्रदान करता है जो सहनशक्ति, ऊर्जा और संपूर्ण स्वास्थ्य को बढ़ाने में मदद करते हैं।</p>
+            <div style="margin-top:16px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+                <a href="#products" class="btn">उत्पाद देखें</a>
+                <a href="#contact" class="btn secondary">अभी पूछताछ करें</a>
+            </div>
+        </div>
+    </section>
+    <section id="products" class="container" style="padding-top:18px;padding-bottom:6px">
+        <h2 class="section-title">हमारे उत्पाद</h2>
+        <div class="products" aria-live="polite">
+            <article class="product-card" aria-label="Beauturex Vitality Capsules">
+                <div class="product-img"><img src="https://images.unsplash.com/photo-1585435557343-3b092031d5b5?auto=format&fit=crop&w=900&q=80" alt="Beauturex Vitality Capsules"></div>
+                <div class="product-info">
+                    <h3>Beauturex विटैलिटी कैप्सूल</h3>
+                    <p>ऊर्जा बढ़ाने, रक्त संचार सुधारने और दैनिक सहनशक्ति देने के लिए पारंपरिक आयुर्वेदिक संयोजन।</p>
+                    <ul>
+                        <li>सहनशक्ति और ऊर्जा बढ़ाता है</li>
+                        <li>रक्त संचार का समर्थन</li>
+                        <li>100% प्राकृतिक घटक</li>
+                        <li>सुरक्षित और नियंत्रित गुणवत्ता</li>
+                    </ul>
+                    <a href="#contact" class="btn">अभी पूछताछ करें</a>
+                </div>
+            </article>
+            <article class="product-card">
+                <div class="product-img"><img src="https://images.unsplash.com/photo-1593085260707-5377ba37f868?auto=format&fit=crop&w=900&q=80" alt="Beauturex Power Boost"></div>
+                <div class="product-info">
+                    <h3>Beauturex पावर बूस्ट</h3>
+                    <p>मांसपेशियों की ताकत, हार्मोनल संतुलन और दीर्घकालिक ऊर्जा के लिए विशेष टॉनिक।</p>
+                    <ul>
+                        <li>प्राकृतिक तरीके से टेस्टोस्टेरोन समर्थन</li>
+                        <li>मांसपेशियों की रिकवरी में सहायक</li>
+                        <li>तेज़ और विश्वसनीय असर</li>
+                    </ul>
+                    <a href="#contact" class="btn">अभी पूछताछ करें</a>
+                </div>
+            </article>
+            <article class="product-card">
+                <div class="product-img"><img src="https://images.unsplash.com/photo-1550572017-edd951b55104?auto=format&fit=crop&w=900&q=80" alt="Beauturex Performance Oil"></div>
+                <div class="product-info">
+                    <h3>Beauturex परफॉर्मेंस ऑयल</h3>
+                    <p>त्वरित अवशोषण के लिए उपयोग में आसान टॉपिकल तेल — तात्कालिक आराम और नियमित उपयोग से बेहतर परिणाम।</p>
+                    <ul>
+                        <li>त्वरित अवशोषण</li>
+                        <li>लंबे समय तक प्रभाव</li>
+                        <li>जड़ी-बूटी आधारित</li>
+                    </ul>
+                    <a href="#contact" class="btn">अभी पूछताछ करें</a>
+                </div>
+            </article>
+        </div>
+    </section>
+    <section id="benefits" class="benefits">
+        <div class="container">
+            <h2 class="section-title">मुख्य लाभ</h2>
+            <div class="benefits-grid">
+                <div class="benefit-card"><div class="benefit-icon"><i class="fas fa-heartbeat"></i></div><h4>रक्त संचार बेहतर</h4><p class="small">बेहतर परफ़ॉर्मेंस और ऊर्जा के लिए रक्त प्रवाह का समर्थन।</p></div>
+                <div class="benefit-card"><div class="benefit-icon"><i class="fas fa-bolt"></i></div><h4>ऊर्जा और सहनशक्ति</h4><p class="small">स्थिर और दीर्घकालिक ऊर्जा।</p></div>
+                <div class="benefit-card"><div class="benefit-icon"><i class="fas fa-seedling"></i></div><h4>प्राकृतिक घटक</h4><p class="small">शुद्ध आयुर्वेदिक जड़ी-बूटियाँ, हानिकारक रसायन नहीं।</p></div>
+                <div class="benefit-card"><div class="benefit-icon"><i class="fas fa-shield-alt"></i></div><h4>सुरक्षित और परखा हुआ</h4><p class="small">गुणवत्ता नियंत्रण और आधुनिक परीक्षण।</p></div>
+            </div>
+        </div>
+    </section>
+    <section id="testimonials" class="testimonials container">
+        <h2 class="section-title">ग्राहक समीक्षा</h2>
+        <div class="testimonial-grid">
+            <div class="testimonial-card"><p class="testimonial-text">“Beauturex ने मेरी जिन्दगी बदल दी — हफ्तों में ऊर्जा और आत्मविश्वास बढ़ा।”</p><div class="testimonial-author"><div class="author-img"><img src="https://randomuser.me/api/portraits/men/65.jpg" alt=""></div><div><strong>रमेश व.</strong><div class="small">नोएडा</div></div></div></div>
+            <div class="testimonial-card"><p class="testimonial-text">“प्राकृतिक और असरदार। सहनशक्ति में स्पष्ट सुधार हुआ।”</p><div class="testimonial-author"><div class="author-img"><img src="https://randomuser.me/api/portraits/men/12.jpg" alt=""></div><div><strong>सुनील मे.</strong><div class="small">मुंबई</div></div></div></div>
+            <div class="testimonial-card"><p class="testimonial-text">“उत्पाद की क्वालिटी और डिलीवरी बढ़िया — अवश्य प्रयास करें।”</p><div class="testimonial-author"><div class="author-img"><img src="https://randomuser.me/api/portraits/men/48.jpg" alt=""></div><div><strong>अजय प.</strong><div class="small">बेंगलुरु</div></div></div></div>
+            <div class="testimonial-card"><p class="testimonial-text">“दो महीने में मुझे सुधार दिखा — सुझाव देता हूँ।”</p><div class="testimonial-author"><div class="author-img"><img src="https://randomuser.me/api/portraits/men/22.jpg" alt=""></div><div><strong>विक्रम S.</strong><div class="small">पुणे</div></div></div></div>
+        </div>
+    </section>
+    <div id="orderPopup" class="order-popup hidden" role="status" aria-live="polite">
+        <div class="order-dot" aria-hidden></div>
+        <div style="font-size:14px"><strong id="orderName">किसी ने</strong> ने अभी <span id="orderProduct">Beauturex विटैलिटी कैप्सूल</span> ऑर्डर किया</div>
+        <button id="closePopup" style="margin-left:auto;background:transparent;border:none;cursor:pointer;color:var(--muted);font-size:16px"><i class="fas fa-times"></i></button>
+    </div>
+    <section id="faq" class="faq">
+        <div class="container faq-container">
+            <h2 class="section-title">अक्सर पूछे जाने वाले प्रश्न</h2>
+            <div class="faq-item" data-id="1">
+                <div class="faq-question">Beauturex के क्या फायदे हैं?<span><i class="fas fa-chevron-down"></i></span></div>
+                <div class="faq-answer"><p>Beauturex नियमित उपयोग से सहनशक्ति, रक्त संचार और समग्र तंदुरुस्ती में सुधार कर सकता है। परिणाम व्यक्ति पर निर्भर करते हैं।</p></div>
+            </div>
+            <div class="faq-item" data-id="2">
+                <div class="faq-question">क्या इसके साइड-इफेक्ट हैं?<span><i class="fas fa-chevron-down"></i></span></div>
+                <div class="faq-answer"><p>आम तौर पर प्राकृतिक सामग्री के कारण गंभीर साइड-इफ़ेक्ट नहीं होते। किसी भी दवा पर होने पर डॉक्टर से परामर्श लें।</p></div>
+            </div>
+            <div class="faq-item" data-id="3">
+                <div class="faq-question">कितने समय में असर दिखता है?</div>
+                <div class="faq-answer"><p>अधिकांश उपयोगकर्ता 2-6 सप्ताह में परिवर्तन अनुभव करते हैं, पर यह व्यक्तिगत है।</p></div>
+            </div>
+        </div>
+    </section>
+    <section id="contact" class="contact container">
+        <h2 class="section-title">पुष्टि / संपर्क करें</h2>
+        <div class="contact-grid">
+            <div class="contact-info">
+                <h3>हमसे जुड़ें</h3>
+                <p class="small">नीचे फॉर्म भरें, हमारी टीम आपको शीघ्र कॉल या WhatsApp करेगी।</p>
+                <p style="margin-top:10px"><strong>WhatsApp / कॉल:</strong> <a href="https://wa.me/918471033094" style="color:#fff;text-decoration:underline">8471033094</a><br><strong>ईमेल:</strong> support@beauturex.example</p>
+                <p class="small">समय: सोम - शनि, 9:00 AM - 6:00 PM</p>
+            </div>
+            <form id="enquiryForm" class="contact-form" aria-label="Enquiry Form" autocomplete="off">
+                <div class="form-group">
+                    <label for="name">पूरा नाम</label>
+                    <input type="text" id="name" name="name" placeholder="पूरा नाम लिखें" required>
+                </div>
+                <div class="form-group">
+                    <label for="mobile">मोबाइल नंबर</label>
+                    <input type="tel" id="mobile" name="mobile" placeholder="10 अंकों का मोबाइल" pattern="\d{10}" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">समस्या / विवरण</label>
+                    <textarea id="message" name="message" placeholder="अपनी समस्या या प्रश्न लिखें" required></textarea>
+                </div>
+                <div style="display:flex;gap:10px;align-items:center">
+                    <button type="submit" class="btn">फॉर्म भेजें</button>
+                    <div class="small">हम आपकी जानकारी गोपनीय रखते हैं।</div>
+                </div>
+                <div id="formMsg" style="margin-top:10px;font-size:14px;color:var(--muted)"></div>
+            </form>
+        </div>
+        
+    </section>
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h3>Beauturex</h3>
+                    <p class="small">प्राकृतिक जड़ी-बूटियों से निर्मित, सुरक्षा और गुणवत्ता पर ध्यान।</p>
+                </div>
+                <div class="footer-section">
+                    <h3>त्वरित लिंक</h3>
+                    <ul class="small" style="list-style:none;padding:0;margin:0">
+                        <li><a href="#products" style="color:inherit;text-decoration:none">उत्पाद</a></li>
+                        <li><a href="#faq" style="color:inherit;text-decoration:none">सवाल</a></li>
+                        <li><a href="#contact" style="color:inherit;text-decoration:none">संपर्क</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>पता</h3>
+                    <p class="small">21, Rohtak Rd, Near Bole Toh Vada Pav, India</p>
+                </div>
+            </div>
+            <div class="footer-bottom">© <span id="year"></span> Beauturex. All rights reserved.</div>
+        </div>
+    </footer>
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+        document.querySelectorAll('.faq-item').forEach(function(item){
+            var q = item.querySelector('.faq-question');
+            q.addEventListener('click', function(){ item.classList.toggle('active'); });
+        });
+       var form = document.getElementById('enquiryForm');
+      var formMsg = document.getElementById('formMsg');
+      form.addEventListener('submit', function(e){
+        e.preventDefault();
+        var name = (document.getElementById('name').value || '').trim();
+        
+        var mobile = (document.getElementById('mobile').value || '').trim();
+        
+        var message = (document.getElementById('message').value || '').trim();
+        if(!name || !mobile || !message){
+          formMsg.textContent = 'कृपया नाम, मोबाइल और विवरण भरें।';
+          return;
+        }
+        if(!/^\d{10}$/.test(mobile)){
+          formMsg.textContent = 'कृपया 10 अंकों का वैध मोबाइल नंबर डालें।';
+          return;
+        }
+        formMsg.textContent = 'आपकी जानकारी तैयार की जा रही है...';
+
+        try{
+          var enquiries = JSON.parse(localStorage.getItem('beauturex_enquiries')||'[]');
+          enquiries.unshift({name:name,age:age,mobile:mobile,issue:issue,message:message,ts:new Date().toISOString()});
+          localStorage.setItem('beauturex_enquiries', JSON.stringify(enquiries.slice(0,500)));
+        }catch(e){ }
+
+        var waNumber = '918471033094';
+        var waMsg = 'नमस्ते Beauturex,%0Aनया पूछताछ मिला:%0Aनाम: ' + encodeURIComponent(name)
+                  
+                  + '%0Aमोबाइल: ' + encodeURIComponent(mobile)
+                  + '%0Aविवरण: ' + encodeURIComponent(message);
+        var waLink = 'https://wa.me/' + waNumber + '?text=' + waMsg;
+
+        setTimeout(function(){
+          formMsg.textContent = 'धन्यवाद! WhatsApp से आगे बताएं।';
+          // open WhatsApp in new tab
+          window.open(waLink, '_blank');
+          form.reset();
+        },700);
+      });
+
+        var popup = document.getElementById('orderPopup');
+        var orderName = document.getElementById('orderName');
+        var orderProduct = document.getElementById('orderProduct');
+        var closePopup = document.getElementById('closePopup');
+        function showRandomOrder(){
+            var demo = [
+                {name:'अमित',product:'Beauturex विटैलिटी कैप्सूल'},
+                {name:'सुनील',product:'Beauturex पावर बूस्ट'},
+                {name:'रोहित',product:'Beauturex परफॉर्मेंस ऑयल'},
+                {name:'विकास',product:'Beauturex विटैलिटी कैप्सूल'}
+            ];
+            var orders = JSON.parse(localStorage.getItem('beauturex_orders')||'[]');
+            var source = orders.length?orders:demo;
+            var pick = source[Math.floor(Math.random()*source.length)];
+            orderName.textContent = pick.name || 'किसी ने';
+            orderProduct.textContent = pick.product || '';
+            popup.classList.remove('hidden');
+            setTimeout(function(){ if(!popup.classList.contains('hidden')) popup.classList.add('hidden'); },6000);
+        }
+        var popupTimer = setTimeout(function tick(){ showRandomOrder(); popupTimer = setTimeout(tick,15000); },3000);
+        closePopup.addEventListener('click',function(){ popup.classList.add('hidden'); });
+        document.addEventListener('keydown',function(e){ if(e.key==='Escape') popup.classList.add('hidden'); });
+    </script>
+</body>
+</html>
