@@ -260,7 +260,45 @@ src="https://www.facebook.com/tr?id=1346633480392576&ev=PageView&noscript=1"
   }
 </style>
 
+ <style>
+     .top-strip {
+  background: #000;
+  color: #fff;
+  font-size: 14px;
+  padding: 6px 0;
+  overflow: hidden;
+  white-space: nowrap;
+  position: relative;
+}
+
+.scroll-text {
+  display: inline-block;
+  padding-left: 100%;
+  animation: moveText 20s linear infinite;
+}
+
+.scroll-text .item {
+  margin: 0 50px; /* yaha gap control karna hai */
+  display: inline-block;
+}
+
+@keyframes moveText {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-100%); }
+}
+
+   </style>
+      
+
 </head>
+  <div class="top-strip">
+  <span class="scroll-text">
+    <span class="item">• 50% Off On All Combo Pack</span>
+    <span class="item">• COD Available</span>
+    <span class="item">• additonal 10% Off On Online Payment</span>
+    <span class="item">• All India Delivery</span>
+  </span>
+</div>
 <body>
     <header>
         <div class="container header-content">
